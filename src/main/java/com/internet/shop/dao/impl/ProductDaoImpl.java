@@ -35,11 +35,12 @@ public class ProductDaoImpl implements ProductDao {
                 return Storage.products.set(i, product);
             }
         }
-        throw new NoSuchElementException("Such product was not found");
+        throw new NoSuchElementException("Such product was not found" + product.getId());
     }
 
     @Override
     public boolean delete(Long id) {
-        return Storage.products.removeIf(x -> x.getId().equals(id));
+        return Storage.products
+                .removeIf(x -> x.getId().equals(id));
     }
 }
