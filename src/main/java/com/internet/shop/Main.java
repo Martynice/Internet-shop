@@ -19,8 +19,10 @@ public class Main {
         productService.create(appleWatch);
         productService.create(asus);
         Storage.products.forEach(System.out::println);
+        Product iphoneX = new Product("IPhone X", 2000.0);
+        iphoneX.setId(iphone.getId());
+        productService.update(iphoneX);
         asus.setPrice(asus.getPrice() * 2);
-        productService.update(asus);
         Storage.products.forEach(System.out::println);
         productService.delete(appleWatch.getId());
         Storage.products.forEach(System.out::println);
