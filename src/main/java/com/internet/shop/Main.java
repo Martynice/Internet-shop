@@ -22,7 +22,6 @@ public class Main {
         Product iphoneX = new Product("IPhone X", 2000.0);
         iphoneX.setId(iphone.getId());
         productService.update(iphoneX);
-        asus.setPrice(asus.getPrice() * 2);
         Storage.products.forEach(System.out::println);
         productService.delete(appleWatch.getId());
         Storage.products.forEach(System.out::println);
