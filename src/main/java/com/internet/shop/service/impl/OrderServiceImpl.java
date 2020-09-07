@@ -13,7 +13,6 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Inject
     private OrderDao orderDao;
-
     @Inject
     private ShoppingCartService shoppingCartService;
 
@@ -21,9 +20,8 @@ public class OrderServiceImpl implements OrderService {
     public Order completeOrder(ShoppingCart shoppingCart) {
         Order order = new Order(shoppingCart.getUserId());
         order.setProducts(List.copyOf(shoppingCart.getProducts()));
-        orderDao.create(order);
         shoppingCartService.clear(shoppingCart);
-        return order;
+        return orderDao.create(order);
     }
 
     @Override
