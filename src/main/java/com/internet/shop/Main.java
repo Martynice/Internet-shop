@@ -58,7 +58,7 @@ public class Main {
         System.out.println("Products deleted from carts");
         Storage.shoppingCarts.forEach(System.out::println);
         shoppingCartService.clear(secondCart);
-        shoppingCartService.delete(secondCart);
+        shoppingCartService.delete(secondCart.getId());
         System.out.println("Second cart cleared and deleted");
         Storage.shoppingCarts.forEach(System.out::println);
         OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
