@@ -4,6 +4,7 @@
     <title>Title</title>
 </head>
 <body>
+<%@include file="../header.jsp"%>
 <form method="post" action="${pageContext.request.contextPath}/product/add">
     <table>
         <tr>

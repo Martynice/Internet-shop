@@ -36,7 +36,7 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/product/all">Products |</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/admin/products">Products(admin) |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/product/add">Products(admin) |</a>
         </li>
         <li class="nav-item active" style="position: absolute; right: 0px; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/fill">FillData</a>

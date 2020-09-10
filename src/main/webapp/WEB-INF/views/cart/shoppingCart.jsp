@@ -5,6 +5,7 @@
     <title>Shopping Cart</title>
 </head>
 <body>
+<%@include file="../header.jsp"%>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -23,7 +24,7 @@
                 <c:out value = "${product.price}"/>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/deleteProduct?id=${product.id}">Delete</a>
+                <a href="${pageContext.request.contextPath}/product/delete/cart?id=${product.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
