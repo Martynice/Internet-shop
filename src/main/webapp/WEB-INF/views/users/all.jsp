@@ -33,8 +33,5 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/registration">Sign up</a><br>
-<a href="${pageContext.request.contextPath}/">Main page</a><br>
-<a href="${pageContext.request.contextPath}/product/all">All products</a><br>
 </body>
 </html>

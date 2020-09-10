@@ -39,12 +39,9 @@
             <a class="nav-link" href="${pageContext.request.contextPath}/product/add">Products(admin) |</a>
         </li>
         <li class="nav-item active" style="position: absolute; right: 0px; top: 10px">
-            <a class="nav-link" href="${pageContext.request.contextPath}/fill">FillData</a>
-        </li>
-        <li class="nav-item active" style="position: absolute; right: 100px; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/user/orders">MyOrders</a>
         </li>
-        <li class="nav-item active" style="position: absolute; right: 200px; top: 10px">
+        <li class="nav-item active" style="position: absolute; right: 100px; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/cart/shoppingCart">Shopping cart</a>
         </li>
     </ul>

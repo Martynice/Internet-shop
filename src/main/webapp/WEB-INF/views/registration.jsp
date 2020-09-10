@@ -48,8 +48,5 @@
         </tr>
     </table>
 </form>
-<a href="${pageContext.request.contextPath}/">Main page</a><br>
-<a href="${pageContext.request.contextPath}/user/all">All users</a><br>
-<a href="${pageContext.request.contextPath}/product/all">All products</a><br>
 </body>
 </html>
