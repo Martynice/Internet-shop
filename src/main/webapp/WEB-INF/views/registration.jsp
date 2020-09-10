@@ -14,7 +14,7 @@
                 <label>Name: </label>
             </td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </td>
         </tr>
         <tr>
@@ -22,7 +22,7 @@
                 <label>Login: </label>
             </td>
             <td>
-                <input type="text" name="login">
+                <input type="text" name="login" required>
             </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
                 <label>Password: </label>
             </td>
             <td>
-                <input type="password" name="pwd">
+                <input type="password" name="pwd" required>
             </td>
         </tr>
         <tr>
@@ -38,7 +38,7 @@
                 <label>Repeat password:</label>
             </td>
             <td>
-                <input type="password" name="pwd-repeat">
+                <input type="password" name="pwd-repeat" required>
             </td>
         </tr>
         <tr>

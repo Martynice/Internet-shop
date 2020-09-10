@@ -12,7 +12,7 @@
                 <label>Name: </label>
             </td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
             </td>
         </tr>
         <tr>
@@ -20,7 +20,7 @@
                 <label>Price: </label>
             </td>
             <td>
-                <input type="text" name="price">
+                <input type="number" name="price" required>
             </td>
         </tr>
         <tr>
