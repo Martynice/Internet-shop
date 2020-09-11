@@ -24,22 +24,25 @@
 <div class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/">HomePage |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/">HomePage</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/registration">Registration |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/registration">Registration</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/users/all">Users |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/users/all">Users</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/product/all">Products |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/product/all">Products</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="${pageContext.request.contextPath}/product/add">Products(admin) |</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/product/all-admin">Products(admin)</a>
         </li>
-        <li class="nav-item active" style="position: absolute; right: 0px; top: 10px">
-            <a class="nav-link" href="${pageContext.request.contextPath}/user/orders">MyOrders</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="${pageContext.request.contextPath}/order/all">All orders(admin)</a>
+        </li>
+        <li class="nav-item active" style="position: absolute; right: 0; top: 10px">
+            <a class="nav-link" href="${pageContext.request.contextPath}/order/current-user">MyOrders</a>
         </li>
         <li class="nav-item active" style="position: absolute; right: 100px; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/shopping-cart/products">Shopping cart</a>
