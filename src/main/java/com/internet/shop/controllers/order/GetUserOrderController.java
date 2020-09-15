@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/order/current-user")
 public class GetUserOrderController extends HttpServlet {
-    private static final Long USER_ID = 1L;
+    private static final String USER_ID = "user_id";
     private static final Injector injector = Injector.getInstance("com.internet.shop");
     private final OrderService orderService =
             (OrderService) injector.getInstance(OrderService.class);
@@ -19,7 +19,8 @@ public class GetUserOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.setAttribute("orders", orderService.getUserOrders(USER_ID));
+        Long userId = (Long) req.getSession().getAttribute(USER_ID);
+        req.setAttribute("orders", orderService.getUserOrders(userId));
         req.getRequestDispatcher("/WEB-INF/views/order/current-user.jsp").forward(req, resp);
     }
 }
