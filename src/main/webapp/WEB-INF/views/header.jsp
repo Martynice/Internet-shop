@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-<div class="navbar navbar-expand-sm bg-dark navbar-dark">
+<div class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="${pageContext.request.contextPath}/">HomePage</a>
