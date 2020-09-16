@@ -41,15 +41,6 @@
                 <input type="password" name="pwd-repeat" class="form-control" required>
             </td>
         </tr>
-        <td>
-            <label>Role:</label>
-        </td>
-        <td>
-            <select>
-                <option value="ADMIN">Admin</option>
-                <option value="USER">User</option>
-            </select>
-        </td>
         <tr>
             <td>
                 <br><button class="btn btn-primary" type="submit">Register</button>
