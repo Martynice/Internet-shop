@@ -1,6 +1,7 @@
 package com.internet.shop.web.filter;
 
 import java.io.IOException;
+import java.util.Set;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,9 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebFilter("/*")
 public class AuthenticationFilter implements Filter {
     private static final String USER_ID = "user_id";
+    private Set<String> availableUrls;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        availableUrls.add("/login");
+        availableUrls.add("/registration");
+        availableUrls.add("/product/add");
     }
 
     @Override

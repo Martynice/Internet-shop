@@ -14,7 +14,7 @@
                 <label>Login: </label>
             </td>
             <td>
-                <input type="text" name="login" required>
+                <input type="text" name="login" class="form-control" required>
             </td>
         </tr>
         <tr>
@@ -22,12 +22,12 @@
                 <label>Password: </label>
             </td>
             <td>
-                <input type="password" name="pwd" required>
+                <input type="password" name="pwd" class="form-control" required>
             </td>
         </tr>
         <tr>
             <td>
-                <br><button type="submit">Login</button>
+                <br><button class="btn btn-primary" type="submit">Login</button>
             </td>
         </tr>
     </table>

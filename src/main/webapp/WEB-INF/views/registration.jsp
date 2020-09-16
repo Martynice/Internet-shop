@@ -14,7 +14,7 @@
                 <label>Name: </label>
             </td>
             <td>
-                <input type="text" name="name" required>
+                <input type="text" name="name" class="form-control" required>
             </td>
         </tr>
         <tr>
@@ -22,7 +22,7 @@
                 <label>Login: </label>
             </td>
             <td>
-                <input type="text" name="login" required>
+                <input type="text" name="login" class="form-control" required>
             </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
                 <label>Password: </label>
             </td>
             <td>
-                <input type="password" name="pwd" required>
+                <input type="password" name="pwd" class="form-control" required>
             </td>
         </tr>
         <tr>
@@ -38,12 +38,21 @@
                 <label>Repeat password:</label>
             </td>
             <td>
-                <input type="password" name="pwd-repeat" required>
+                <input type="password" name="pwd-repeat" class="form-control" required>
             </td>
         </tr>
+        <td>
+            <label>Role:</label>
+        </td>
+        <td>
+            <select>
+                <option value="ADMIN">Admin</option>
+                <option value="USER">User</option>
+            </select>
+        </td>
         <tr>
             <td>
-                <br><button type="submit">Register</button>
+                <br><button class="btn btn-primary" type="submit">Register</button>
             </td>
         </tr>
     </table>

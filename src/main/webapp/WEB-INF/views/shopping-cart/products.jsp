@@ -29,6 +29,6 @@
         </tr>
     </c:forEach>
 </table>
-<br><a href="${pageContext.request.contextPath}/order/complete?id=${shoppingCart.userId}"><button>Order</button></a>
+<br><a href="${pageContext.request.contextPath}/order/complete?id=${shoppingCart.userId}"><button class="btn btn-primary">Order</button></a>
 </body>
 </html>
