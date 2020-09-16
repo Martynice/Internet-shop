@@ -6,7 +6,6 @@ import com.internet.shop.model.User;
 import com.internet.shop.service.UserService;
 import java.io.IOException;
 import java.util.Set;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
