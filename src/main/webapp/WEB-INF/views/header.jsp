@@ -41,10 +41,16 @@
         <li class="nav-item active">
             <a class="nav-link" href="${pageContext.request.contextPath}/order/all">All orders(admin)</a>
         </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="${pageContext.request.contextPath}/inject">Inject Data</a>
+        </li>
         <li class="nav-item active" style="position: absolute; right: 0; top: 10px">
-            <a class="nav-link" href="${pageContext.request.contextPath}/order/current-user">MyOrders</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
         </li>
         <li class="nav-item active" style="position: absolute; right: 100px; top: 10px">
+            <a class="nav-link" href="${pageContext.request.contextPath}/order/current-user">MyOrders</a>
+        </li>
+        <li class="nav-item active" style="position: absolute; right: 200px; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/shopping-cart/products">Shopping cart</a>
         </li>
     </ul>
