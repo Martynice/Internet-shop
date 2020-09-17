@@ -41,6 +41,9 @@
         <li class="nav-item active">
             <a class="nav-link" href="${pageContext.request.contextPath}/order/all">All orders(admin)</a>
         </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="${pageContext.request.contextPath}/inject">Inject Data</a>
+        </li>
         <li class="nav-item active" style="position: absolute; right: 0; top: 10px">
             <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
         </li>
