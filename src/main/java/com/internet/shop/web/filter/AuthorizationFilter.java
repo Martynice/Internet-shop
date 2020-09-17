@@ -14,11 +14,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter("/*")
 public class AuthorizationFilter implements Filter {
     private static final String USER_ID = "user_id";
     private static final Injector injector = Injector.getInstance("com.internet.shop");
@@ -30,13 +28,13 @@ public class AuthorizationFilter implements Filter {
         protectedUrl.put("/users/all", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/users/delete", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/order/all", List.of(Role.RoleName.ADMIN));
+        protectedUrl.put("/order/delete", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/product/all-admin", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/product/add", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/product/delete", List.of(Role.RoleName.ADMIN));
         protectedUrl.put("/product/buy", List.of(Role.RoleName.USER));
         protectedUrl.put("/order/complete", List.of(Role.RoleName.USER));
         protectedUrl.put("/order/current-user", List.of(Role.RoleName.USER));
-        protectedUrl.put("/order/delete", List.of(Role.RoleName.USER));
         protectedUrl.put("/shopping-cart/products", List.of(Role.RoleName.USER));
         protectedUrl.put("/shopping-cart/product/delete", List.of(Role.RoleName.USER));
     }
@@ -47,18 +45,12 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         String requestedUrl = req.getServletPath();
-        if (protectedUrl.get(requestedUrl) == null) {
-            filterChain.doFilter(req, resp);
-            return;
-        }
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
-        User user = userService.get(userId);
-        if (isAuthorizes(user, protectedUrl.get(requestedUrl))) {
+        if (!protectedUrl.containsKey(requestedUrl)
+                || isAuthorized(userService.get(userId), protectedUrl.get(requestedUrl))) {
             filterChain.doFilter(req, resp);
-            return;
         } else {
             req.getRequestDispatcher("/WEB-INF/views/accessDenied.jsp").forward(req, resp);
-            return;
         }
     }
 
@@ -66,7 +58,7 @@ public class AuthorizationFilter implements Filter {
     public void destroy() {
     }
 
-    private boolean isAuthorizes(User user, List<Role.RoleName> authorizedRoles) {
+    private boolean isAuthorized(User user, List<Role.RoleName> authorizedRoles) {
         for (Role.RoleName authorizedRole : authorizedRoles) {
             for (Role userRole : user.getRoles()) {
                 if (authorizedRole.equals(userRole.getRoleName())) {
