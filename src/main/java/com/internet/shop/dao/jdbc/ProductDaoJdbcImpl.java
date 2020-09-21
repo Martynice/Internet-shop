@@ -37,38 +37,30 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Optional<Product> get(Long id) {
-        String query = "SELECT * FROM products WHERE product_id = ?";
+        String query = "SELECT * FROM products WHERE product_id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                Long productId = resultSet.getLong("productId");
-                String name = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
-                Product product = new Product(name, price);
-                product.setId(productId);
+                Product product = getProductFromResultSet(resultSet);
                 return Optional.of(product);
             }
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't get product", e);
+            throw new DataProcessingException("Can't get product with id " + id, e);
         }
         return Optional.empty();
     }
 
     @Override
     public List<Product> getAll() {
-        String query = "SELECT * FROM products";
+        String query = "SELECT * FROM products WHERE deleted = FALSE";
         List<Product> products = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Long productId = resultSet.getLong("productId");
-                String name = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
-                Product product = new Product(name, price);
-                product.setId(productId);
+                Product product = getProductFromResultSet(resultSet);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -79,7 +71,8 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Product update(Product product) {
-        String query = "UPDATE products SET name = ?, price = ? WHERE product_id = ?";
+        String query = "UPDATE products SET name = ?, price = ? "
+                + "WHERE product_id = ? AND deleted = FALSE";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, product.getName());
@@ -100,7 +93,14 @@ public class ProductDaoJdbcImpl implements ProductDao {
             statement.setLong(1, id);
             return statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            throw new DataProcessingException("Can't delete product", e);
+            throw new DataProcessingException("Can't delete product with id " + id, e);
         }
+    }
+
+    private Product getProductFromResultSet(ResultSet resultSet) throws SQLException {
+        Long productId = resultSet.getLong("productId");
+        String name = resultSet.getString("name");
+        double price = resultSet.getDouble("price");
+        return new Product(productId, name, price);
     }
 }
