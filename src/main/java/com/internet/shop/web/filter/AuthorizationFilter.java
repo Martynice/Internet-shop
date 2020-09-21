@@ -59,13 +59,8 @@ public class AuthorizationFilter implements Filter {
     }
 
     private boolean isAuthorized(User user, List<Role.RoleName> authorizedRoles) {
-        for (Role.RoleName authorizedRole : authorizedRoles) {
-            for (Role userRole : user.getRoles()) {
-                if (authorizedRole.equals(userRole.getRoleName())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return user.getRoles().stream()
+                .map(Role::getRoleName)
+                .anyMatch(authorizedRoles::contains);
     }
 }
