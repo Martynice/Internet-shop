@@ -5,4 +5,3 @@ CREATE TABLE `internet-shop`.`products` (
   `price` DOUBLE NOT NULL,
   `deleted` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_id`));
-  
