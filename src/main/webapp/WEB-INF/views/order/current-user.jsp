@@ -23,7 +23,7 @@
                 <a href="${pageContext.request.contextPath}/order/details?id=${order.id}">Details</a>
             </td>
             <td>
-                <a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"><button>Delete</button></a>
+                <a href="${pageContext.request.contextPath}/order/current-user/delete?id=${order.id}"><button>Delete</button></a>
             </td>
         </tr>
     </c:forEach>

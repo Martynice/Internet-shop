@@ -28,6 +28,7 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 User user = getUserFromResultSet(resultSet);
+                statement.close();
                 user.setRoles(getRoleFromUser(user.getId(), connection));
                 return Optional.of(user);
             }
@@ -51,6 +52,7 @@ public class UserDaoJdbcImpl implements UserDao {
             if (resultSet.next()) {
                 user.setId(resultSet.getLong(1));
             }
+            statement.close();
             return insertRoles(user, connection);
         } catch (SQLException e) {
             throw new DataProcessingException("Couldn't create user " + user, e);
@@ -66,6 +68,7 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 User user = getUserFromResultSet(resultSet);
+                statement.close();
                 user.setRoles(getRoleFromUser(user.getId(), connection));
                 return Optional.of(user);
             }
@@ -84,8 +87,11 @@ public class UserDaoJdbcImpl implements UserDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User user = getUserFromResultSet(resultSet);
-                user.setRoles(getRoleFromUser(user.getId(), connection));
                 users.add(user);
+            }
+            statement.close();
+            for (User user : users) {
+                user.setRoles(getRoleFromUser(user.getId(), connection));
             }
             return users;
         } catch (SQLException e) {
@@ -104,6 +110,7 @@ public class UserDaoJdbcImpl implements UserDao {
             statement.setString(3, user.getPassword());
             statement.setLong(4, user.getId());
             statement.executeUpdate();
+            statement.close();
             deleteUserFromUsersRoles(user.getId(), connection);
             insertRoles(user, connection);
         } catch (SQLException e) {

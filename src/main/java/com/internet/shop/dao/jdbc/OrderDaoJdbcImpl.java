@@ -27,8 +27,11 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Order order = getOrderFromResultSet(resultSet);
-                order.setProducts(getProductsFromOrder(order.getId(), connection));
                 orders.add(order);
+            }
+            statement.close();
+            for (Order order : orders) {
+                order.setProducts(getProductsFromOrder(order.getId(), connection));
             }
             return orders;
         } catch (SQLException e) {
@@ -49,6 +52,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             if (resultSet.next()) {
                 order.setId(resultSet.getLong(1));
             }
+            statement.close();
             return insertProduct(order, connection);
         } catch (SQLException e) {
             throw new DataProcessingException("Couldn't create order " + order, e);
@@ -64,6 +68,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 Order order = getOrderFromResultSet(resultSet);
+                statement.close();
                 order.setProducts(getProductsFromOrder(order.getId(), connection));
                 return Optional.of(order);
             }
@@ -82,8 +87,11 @@ public class OrderDaoJdbcImpl implements OrderDao {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Order order = getOrderFromResultSet(resultSet);
-                order.setProducts(getProductsFromOrder(order.getId(), connection));
                 orders.add(order);
+            }
+            statement.close();
+            for (Order order : orders) {
+                order.setProducts(getProductsFromOrder(order.getId(), connection));
             }
             return orders;
         } catch (SQLException e) {
@@ -99,6 +107,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
             statement.setLong(1, order.getUserId());
             statement.setLong(2, order.getId());
             statement.executeUpdate();
+            statement.close();
             deleteOrderFromOrdersProducts(order.getId(), connection);
             insertProduct(order, connection);
             return order;
