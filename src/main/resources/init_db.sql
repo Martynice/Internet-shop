@@ -90,6 +90,7 @@ CREATE TABLE `internet_shop`.`shopping_carts`
 (
     `cart_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
     `user_id` BIGINT(11) NOT NULL,
+    `deleted` TINYINT    NOT NULL DEFAULT 0,
     PRIMARY KEY (`cart_id`),
     INDEX `user_cart_idx` (`user_id` ASC) VISIBLE,
     CONSTRAINT `user_cart`
