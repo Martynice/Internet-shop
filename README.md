@@ -25,7 +25,7 @@ One user can have multiple roles.<br>
 **Frontend:** HTML, CSS, Bootstrap, JSP, JSTL<br>
 **Database:** MySQL<br>
 
-# To run this project you need do several steps
+# To run this project you need to do several steps
 
 * Download, install and configure JDK https://www.oracle.com/java/technologies/javase-downloads.html
 * Download and install IDEA Ultimate Edition
